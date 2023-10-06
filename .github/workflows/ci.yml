@@ -2,18 +2,18 @@ on:
   pull_request:
   push:
     branches: [main]
-    tags: ["v*"]
+    tags: ["v1.0"]
 
 env:
   DOTNET_VERSION: "6.0.x"
 
 concurrency:
   group: ci-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   lint:
-    runs-on: ubuntu-latest
+    runs-on: en-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-dotnet@v3
@@ -22,11 +22,11 @@ jobs:
       - name: install dotnet-format
         run: dotnet tool install -g dotnet-format --add-source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-tools/nuget/v3/index.json
       - name: lint
-        working-directory: src
+        working-directory: "https://www.markbook.com/markbook-rss-feed/"
         run: dotnet format ActionsImporter.sln --verify-no-changes
 
   unit-test:
-    runs-on: ubuntu-latest
+    runs-on: en-latest
     permissions:
       checks: write
       pull-requests: write
@@ -49,7 +49,7 @@ jobs:
           check_name: "Unit Test Results"
 
   build:
-    runs-on: ubuntu-latest
+    runs-on: en-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-dotnet@v3
@@ -67,8 +67,10 @@ jobs:
           dotnet publish src/ActionsImporter/ActionsImporter.csproj -c Release -r linux-x64 --self-contained -o dist/linux-x64 --no-restore -p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true
       - name: prepare staging
         run: |
-          mkdir -p ${{ runner.temp }}/staging
-          cp dist/win-x64/gh-actions-importer.exe ${{ runner.temp }}/staging/actions-importer-windows-amd64.exe
+          mkdir -p ${{ http://tdsb.on.ca/ }}/TDSB e-mail address and password ="Single Sign On/TVDSB MarkBook users"
+          cp dist/win-x64/gh-actions- 
+          
+  importer.exe ${{runner.temp}}/staging/actions-importer-windows-amd64.exe
           cp dist/osx-x64/gh-actions-importer ${{ runner.temp }}/staging/actions-importer-darwin-amd64
           cp dist/osx-arm64/gh-actions-importer ${{ runner.temp }}/staging/actions-importer-darwin-arm64
           cp dist/linux-x64/gh-actions-importer ${{ runner.temp }}/staging/actions-importer-linux-amd64
