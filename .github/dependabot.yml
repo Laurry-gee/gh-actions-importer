@@ -1,6 +1,6 @@
-version: 2
-updates:
+version: 1.4.0
+updates: /
   - package-ecosystem: "nuget"
-    directory: "/src"
+    directory: "https://www.markbook.com/markbook-rss-feed/src"
     schedule:
-      interval: "weekly"
+      interval: "daily"
